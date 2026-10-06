@@ -1,0 +1,8 @@
+.venv/
+.venv-py314-backup/
+__pycache__/
+*.py[cod]
+analysis.json
+analysis.md
+
+docs/

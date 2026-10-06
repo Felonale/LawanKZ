@@ -1,0 +1,4 @@
+﻿model,vocabulary_size,evaluation_coverage,mean_association_cosine,mean_group_precision_at_5,oov_typo_supported
+Word2Vec,1492,1.0,0.5859,0.2286,False
+fastText,1492,1.0,0.5863,0.2429,True
+GloVe,1492,1.0,0.7334,0.2714,False

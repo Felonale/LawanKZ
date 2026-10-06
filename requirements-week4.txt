@@ -1,0 +1,12 @@
+# Проверено с Python 3.13.2 на Windows.
+beautifulsoup4==4.15.0
+httpx==0.28.1
+pandas==3.0.6
+scikit-learn==1.9.1
+spacy==3.8.16
+nltk==3.10.3
+matplotlib==3.11.2
+wordcloud==1.9.6
+jupyterlab==4.6.4
+gensim==4.4.0
+ru_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/ru_core_news_sm-3.8.0/ru_core_news_sm-3.8.0-py3-none-any.whl#sha256=69978d47b43e2c4f329bebdb155e8e9d3861bba1a58ba25551419dae7d7e07fc

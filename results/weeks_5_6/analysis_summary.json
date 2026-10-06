@@ -1,0 +1,44 @@
+{
+  "training_articles": 325,
+  "training_tokens": 45924,
+  "vector_size": 100,
+  "models": [
+    {
+      "model": "Word2Vec",
+      "vocabulary_size": 1492,
+      "evaluation_coverage": 1.0,
+      "mean_association_cosine": 0.5859,
+      "mean_group_precision_at_5": 0.2286,
+      "oov_typo_supported": false
+    },
+    {
+      "model": "fastText",
+      "vocabulary_size": 1492,
+      "evaluation_coverage": 1.0,
+      "mean_association_cosine": 0.5863,
+      "mean_group_precision_at_5": 0.2429,
+      "oov_typo_supported": true
+    },
+    {
+      "model": "GloVe",
+      "vocabulary_size": 1492,
+      "evaluation_coverage": 1.0,
+      "mean_association_cosine": 0.7334,
+      "mean_group_precision_at_5": 0.2714,
+      "oov_typo_supported": false
+    }
+  ],
+  "retrieval": {
+    "article_count": 325,
+    "top_k": 5,
+    "precision_at_5": 0.6566,
+    "hit_rate_at_5": 0.8831,
+    "evaluation_note": "Запросом служит сама статья; она исключена, релевантны статьи того же акта."
+  },
+  "sample_query_count": 5,
+  "limitations": [
+    "Корпус мал для устойчивых эмбеддингов; результаты зависят от seed и состава актов.",
+    "Релевантность поиска автоматически оценивается по принадлежности к тому же акту, а не экспертами.",
+    "PCA сохраняет лишь часть многомерной структуры и показывает тенденции, а не строгие кластеры."
+  ]
+}

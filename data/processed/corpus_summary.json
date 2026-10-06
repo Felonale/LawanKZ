@@ -1,0 +1,61 @@
+{
+  "document_count": 6,
+  "total_words": 62467,
+  "minimum_words_required": 50000,
+  "documents": [
+    {
+      "id": "personal_data",
+      "title": "О персональных данных и их защите",
+      "topic": "персональные данные",
+      "url": "https://old.adilet.zan.kz/rus/docs/Z1300000094",
+      "fetched_at_utc": "2026-09-22T08:57:14+00:00",
+      "sha256": "b9c82c03cd38dbe184958b4f8ac569aa287485c7b6c676dd50781b738f206fd4",
+      "word_count": 7723
+    },
+    {
+      "id": "cybersecurity",
+      "title": "О кибербезопасности",
+      "topic": "кибербезопасность",
+      "url": "https://old.adilet.zan.kz/rus/docs/Z1500000418",
+      "fetched_at_utc": "2026-09-22T08:57:15+00:00",
+      "sha256": "6a96ef736143f2dc71dccc217c78aa55cd6636b0f77b0f34ccb2475dfca4ea96",
+      "word_count": 11568
+    },
+    {
+      "id": "digital_code",
+      "title": "Цифровой кодекс Республики Казахстан",
+      "topic": "цифровое регулирование",
+      "url": "https://old.adilet.zan.kz/rus/docs/K2600000255",
+      "fetched_at_utc": "2026-09-22T08:57:17+00:00",
+      "sha256": "b00493cef231acb0465984d1101317f666d62f9e7848922f1b8c45781e002c63",
+      "word_count": 13616
+    },
+    {
+      "id": "communications",
+      "title": "О связи",
+      "topic": "связь и цифровая инфраструктура",
+      "url": "https://old.adilet.zan.kz/rus/docs/Z040000567_",
+      "fetched_at_utc": "2026-09-22T08:57:18+00:00",
+      "sha256": "5a6ca82cd2c5d400b960de3d950a2e18a6bb4982ded2d0ae671753a995b741a4",
+      "word_count": 18078
+    },
+    {
+      "id": "access_to_information",
+      "title": "О доступе к информации",
+      "topic": "доступ к информации",
+      "url": "https://old.adilet.zan.kz/rus/docs/Z1500000401",
+      "fetched_at_utc": "2026-09-22T08:57:20+00:00",
+      "sha256": "1a4aaf41f10ae37e606ef865bcbe8f9b556282ff0fae9093693ff1e0114052cd",
+      "word_count": 8149
+    },
+    {
+      "id": "artificial_intelligence",
+      "title": "Об искусственном интеллекте",
+      "topic": "искусственный интеллект и данные",
+      "url": "https://old.adilet.zan.kz/rus/docs/Z2500000230",
+      "fetched_at_utc": "2026-09-22T08:57:21+00:00",
+      "sha256": "5c8095c2d2e426a94e82316ad7015405f05b59607957d22eef78653a10dd818c",
+      "word_count": 3333
+    }
+  ]
+}
