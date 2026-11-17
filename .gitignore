@@ -2,8 +2,35 @@
 .venv-py314-backup/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
 analysis.json
 analysis.md
 
+# Локальные документы проекта и временные файлы.
 docs/
 tmp/
+
+# Загруженные и обработанные данные. В Git остаётся только data/sources.json.
+data/raw/
+data/processed/
+
+# Результаты вычислений, модели, графики, отчёты и выполненные ноутбуки.
+results/
+output/
+notebooks/
+examples/*.report.json
+examples/*.report.md
+
+# Тяжёлые артефакты машинного обучения.
+*.safetensors
+*.joblib
+*.npy
+*.npz
+*.model
+*.kv
+
+# Задания, отчёты и презентации в корне проекта.
+/*.pdf
+/*.docx
+/*.pptx
