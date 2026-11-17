@@ -7,18 +7,15 @@ __pycache__/
 analysis.json
 analysis.md
 
-# Локальные документы проекта и временные файлы.
 docs/
 tmp/
 
-# Загруженные и обработанные данные. В Git остаётся только data/sources.json.
+# Загруженные и обработанные данные
 data/raw/
 data/processed/
 
-# Результаты вычислений, модели, графики, отчёты и выполненные ноутбуки.
 results/
 output/
-notebooks/
 examples/*.report.json
 examples/*.report.md
 
@@ -30,7 +27,7 @@ examples/*.report.md
 *.model
 *.kv
 
-# Задания, отчёты и презентации в корне проекта.
+#
 /*.pdf
 /*.docx
 /*.pptx

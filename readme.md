@@ -114,3 +114,93 @@ py -3.13 -m venv .venv
 - автоматический анализ вообще всех НПА Казахстана;
 - одновременная работа на русском и казахском;
 - сложная юридическая онтология.
+
+## Второй РК: неделя 1 — Transformer и Attention
+
+Первая неделя нового задания выполнена отдельно от результатов первого РК. На
+15 статьях сравниваются TF-IDF и контекстные эмбеддинги модели
+`sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`. Также разобрано,
+как скрытый вектор слова «оператор» меняется в трёх контекстах.
+
+Установка и воспроизведение:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-rk2.txt
+.\.venv\Scripts\python.exe .\scripts\run_rk2_week1.py
+.\.venv\Scripts\python.exe -m jupyter lab .\notebooks\rk2_week1_attention_transformer.ipynb
+```
+
+Готовые материалы находятся в `results/rk2_week1/`, а выполненный ноутбук — в
+`notebooks/rk2_week1_attention_transformer.ipynb`. Эксперимент намеренно сохраняет
+и отрицательный результат: на малой однородной юридической выборке TF-IDF лучше
+группирует статьи по исходному акту, чем общая многоязычная Transformer-модель.
+
+## Второй РК: неделя 2 — предобученный BERT
+
+Для 306 непустых статей поставлена учебная задача классификации по исходному
+нормативному акту. Базовая модель `TF-IDF + Logistic Regression` сравнивается с
+`frozen cointegrated/rubert-tiny2 + Logistic Regression`. Веса BERT на этом этапе
+не изменяются: модель используется в режиме feature extraction.
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\run_rk2_week2.py
+.\.venv\Scripts\python.exe -m jupyter lab .\notebooks\rk2_week2_pretrained_bert.ipynb
+```
+
+Выполненный ноутбук находится в `notebooks/rk2_week2_pretrained_bert.ipynb`, а
+таблицы, предсказания, модели и график — в `results/rk2_week2/`.
+
+## Второй РК: неделя 3 — fine-tuning RuBERT
+
+`cointegrated/rubert-tiny2` дообучен на статьях шести нормативных актов. Исходный
+train разделён на fit и validation, а test второй недели оставлен неизменным.
+Длинные статьи делятся на фрагменты; при оценке их логиты усредняются обратно до
+уровня статьи. Лучшая эпоха выбирается только по validation macro-F1.
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\run_rk2_week3.py
+.\.venv\Scripts\python.exe .\scripts\build_rk2_week3_notebook.py
+.\.venv\Scripts\python.exe -m jupyter lab .\notebooks\rk2_week3_fine_tuning.ipynb
+```
+
+На 77 тестовых статьях frozen BERT второй недели получил macro-F1 `0,8514`, а
+fine-tuned RuBERT — `0,8527`. Небольшой прирост сохранён честно и используется
+как отправная точка экспериментальной четвёртой недели. Материалы находятся в
+`results/rk2_week3/`.
+
+## Второй РК: неделя 4 — эксперименты и анализ ошибок
+
+Выполнено пять независимых контролируемых запусков: learning rate `1e-5`, `3e-5`
+и `5e-5` при 100% fit, а также 50%, 75% и 100% обучающих статей при `3e-5`.
+Общая конфигурация `3e-5 + 100%` не обучается дважды. Для всех запусков
+зафиксированы seed, validation и test; итоговая модель выбирается по validation,
+а не по тестовым ответам.
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\run_rk2_week4.py
+.\.venv\Scripts\python.exe .\scripts\build_rk2_week4_notebook.py
+.\.venv\Scripts\python.exe -m jupyter lab .\notebooks\rk2_week4_experiments_errors.ipynb
+```
+
+Лучшей по validation стала конфигурация `5e-5 + 100% данных`; её test macro-F1
+равен `0,8666`. В `results/rk2_week4/` сохранены сводная таблица Accuracy,
+Precision, Recall и F1, графики факторов, логи всех запусков и таблица с десятью
+ошибками базовой модели третьей недели и гипотезами об их причинах.
+
+## Второй РК: неделя 5 — Streamlit-приложение
+
+Лучшая модель четвёртой недели подключена к локальному веб-интерфейсу. В нём
+можно вставить собственный текст или выбрать один из пяти контрольных примеров,
+запустить анализ и увидеть предсказанный документ, уверенность, число обработанных
+фрагментов и вероятности всех шести классов.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-rk2.txt
+.\.venv\Scripts\streamlit.exe run .\app.py
+```
+
+Исходный код интерфейса находится в `app.py`, логика инференса — в
+`lawankz/rk2_week5.py`. Результаты пяти испытаний и скриншоты сохранены в
+`results/rk2_week5/`. Все пять отложенных контрольных статей классифицированы
+правильно, однако уверенность остаётся низкой (около 20–25%), что явно показано
+в интерфейсе и не скрывается от пользователя.
